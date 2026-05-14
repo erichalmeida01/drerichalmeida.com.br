@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Dr. Erich Almeida · Reabilitação Estética · Lentes em Resina e Porcelana · Goiânia</title>
+<meta name="description" content="Reabilitação estética com Lentes em Resina e Porcelana. Planejamento digital 3D, atendimento premium e resultados naturais. Goiânia, Setor Central." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          ivory:   'rgb(var(--c-ivory) / <alpha-value>)',
+          bone:    'rgb(var(--c-bone) / <alpha-value>)',
+          pearl:   'rgb(var(--c-pearl) / <alpha-value>)',
+          ink:     'rgb(var(--c-ink) / <alpha-value>)',
+          inksoft: 'rgb(var(--c-inksoft) / <alpha-value>)',
+          gold:    '#C8A875',
+          golddk:  '#A98851',
+          ash:     'rgb(var(--c-ash) / <alpha-value>)',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          sans:  ['Inter', 'system-ui', 'sans-serif'],
+        },
+        letterSpacing: {
+          eyebrow: '0.22em',
+        },
+        boxShadow: {
+          softlux: '0 30px 60px -30px rgba(15,30,61,0.18), 0 10px 30px -20px rgba(15,30,61,0.12)',
+          goldlux: '0 20px 40px -22px rgba(169,136,81,0.45)',
+        },
+      }
+    }
+  }
+</script>
+
+<script>
+  // Theme: set BEFORE paint to avoid flash
+  (function () {
+    try {
+      var saved = localStorage.getItem('ea-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('theme-dark');
+    } catch (e) {}
+  })();
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  /* Theme tokens (light by default, swapped under .theme-dark) */
+  :root {
+    --c-ivory:   250 248 245;
+    --c-bone:    242 238 231;
+    --c-pearl:   232 226 214;
+    --c-ink:      15  30  61;
+    --c-inksoft:  26  42  77;
+    --c-ash:     107 106 101;
+    color-scheme: light;
+  }
+  html.theme-dark {
+    --c-ivory:    8  14  30;
+    --c-bone:    16  26  50;
+    --c-pearl:   60  75 110;
+    --c-ink:    245 245 240;
+    --c-inksoft:220 220 215;
+    --c-ash:    155 160 175;
+    color-scheme: dark;
+  }
+  html, body { background: rgb(var(--c-ivory)); }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: rgb(var(--c-ink));
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color .3s ease, color .3s ease;
+  }
+  .font-display { font-family: 'Playfair Display', Georgia, serif; font-feature-settings: "liga","dlig"; }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+    font-weight: 500;
+    color: #A98851;
+  }
+  .hairline { height: 1px; background: linear-gradient(to right, transparent, rgb(var(--c-ink) / 0.18), transparent); }
+  .hairline-gold { height: 1px; background: linear-gradient(to right, transparent, rgba(169,136,81,0.6), transparent); }
+
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.02em; }
+
+  /* CTA hover */
+  .btn-primary { transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 24px 48px -22px rgba(169,136,81,.55); }
+  .btn-ghost { transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
+
+  /* Accordion */
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .chev { transform: rotate(45deg); }
+  .chev { transition: transform .3s ease; }
+
+  /* Decorative gold line under headings */
+  .gold-rule::after {
+    content: ""; display: block; width: 56px; height: 1px; background: #C8A875; margin-top: 14px;
+  }
+  .gold-rule.center::after { margin-left: auto; margin-right: auto; }
+
+  /* Section reveal */
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .rise { animation: rise .8s ease both; }
+
+  /* Sticky mobile CTA shadow */
+  .sticky-cta-shadow { box-shadow: 0 -10px 30px -10px rgba(15,30,61,0.12); }
+
+  /* Subtle noise via CSS only */
+  .lux-bg {
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(200,168,117,0.12), transparent 60%),
+      radial-gradient(800px 500px at -10% 30%, rgb(var(--c-ink) / 0.05), transparent 60%),
+      rgb(var(--c-ivory));
+  }
+
+  /* Logo light/dark swap (use !important to beat Tailwind's sm:block) */
+  html.theme-dark .logo-light { display: none !important; }
+  .logo-dark { display: none !important; }
+  html.theme-dark .logo-dark { display: inline-block !important; }
+
+  /* Theme toggle icon swap */
+  .icon-sun { display: none; }
+  html.theme-dark .icon-sun { display: inline-block; }
+  html.theme-dark .icon-moon { display: none; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="env,react">
+const { useState, useEffect, useRef } = React;
+
+/* ---------- Inline icons (clean, hairline) ---------- */
+const Icon = {
+  Tooth: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M7.5 3.5c-2 0-3.5 1.5-3.5 3.8 0 1.6.5 2.4.8 3.4.3 1.1.2 2 .3 3.2.2 2.4 1 6.6 2.4 6.6 1.3 0 1.4-3 2-4.6.4-1 .9-1.4 1.5-1.4s1.1.4 1.5 1.4c.6 1.6.7 4.6 2 4.6 1.4 0 2.2-4.2 2.4-6.6.1-1.2 0-2.1.3-3.2.3-1 .8-1.8.8-3.4 0-2.3-1.5-3.8-3.5-3.8-1.6 0-2.4.9-3.5.9s-1.9-.9-3.5-.9Z"/>
+    </svg>
+  ),
+  Cube3D: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M12 3 3.5 7.5v9L12 21l8.5-4.5v-9L12 3Z"/>
+      <path d="M3.5 7.5 12 12l8.5-4.5"/><path d="M12 12v9"/>
+    </svg>
+  ),
+  Heart: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M12 20s-7-4.35-9-9.2C1.6 7 4 4 7 4c2 0 3.3 1.2 5 3 1.7-1.8 3-3 5-3 3 0 5.4 3 4 6.8C19 15.65 12 20 12 20Z"/>
+    </svg>
+  ),
+  Clock: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
+    </svg>
+  ),
+  Diamond: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="m6 9 6-5 6 5-6 11L6 9Z"/><path d="M6 9h12"/><path d="M12 4v5"/>
+    </svg>
+  ),
+  Plus: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" {...p}>
+      <path d="M12 5v14M5 12h14"/>
+    </svg>
+  ),
+  Whatsapp: (p) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...p}>
+      <path d="M19.05 4.91A10 10 0 0 0 4.16 18.2L3 22l3.9-1.13A10 10 0 1 0 19.05 4.91ZM12 20.07a8.07 8.07 0 0 1-4.11-1.13l-.3-.18-2.32.67.69-2.26-.19-.31A8.08 8.08 0 1 1 12 20.07Zm4.43-5.58c-.24-.12-1.43-.71-1.65-.79-.22-.08-.39-.12-.55.12s-.63.79-.78.95c-.14.16-.29.18-.53.06a6.6 6.6 0 0 1-1.95-1.2 7.32 7.32 0 0 1-1.35-1.68c-.14-.24 0-.37.1-.49.1-.1.24-.29.36-.43.12-.14.16-.24.24-.4.08-.16 0-.3-.04-.42-.06-.12-.55-1.33-.75-1.81-.2-.48-.4-.41-.55-.41h-.47a.9.9 0 0 0-.65.31 2.74 2.74 0 0 0-.86 2.04c0 1.21.88 2.38 1 2.54.12.16 1.74 2.66 4.22 3.73a14.43 14.43 0 0 0 1.41.52 3.4 3.4 0 0 0 1.56.1 2.55 2.55 0 0 0 1.67-1.18 2.07 2.07 0 0 0 .14-1.18c-.06-.1-.22-.16-.46-.28Z"/>
+    </svg>
+  ),
+  Phone: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7a2 2 0 0 1 1.72 2.03Z"/>
+    </svg>
+  ),
+  Pin: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+    </svg>
+  ),
+  Route: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M6 19a3 3 0 0 0 0-6h12a3 3 0 0 0 0-6"/><circle cx="6" cy="5" r="2"/><circle cx="18" cy="19" r="2"/>
+    </svg>
+  ),
+  Waze: (p) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...p}>
+      <path d="M20.5 11.4a7.86 7.86 0 0 0-1-3.84 8 8 0 0 0-3-3 7.95 7.95 0 0 0-4.05-1.07 7.85 7.85 0 0 0-5.61 2.16 7.78 7.78 0 0 0-2.39 5.4c-.04 1.13.1 2 .3 2.85.32 1.36.42 2.43-.18 3.18-.27.34-.32.8-.13 1.2.2.39.6.63 1.04.63h1.74a3.07 3.07 0 0 0 5.97.36c.7.04 1.4.04 2.1 0a3.07 3.07 0 0 0 6.06-.66c0-.07 0-.13-.02-.2.94-.36 1.76-.96 2.4-1.74a.74.74 0 0 0-.18-1.1c-1.16-.78-1.08-1.84-1.05-3.17v-.99Zm-12.6 9.07a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2Zm8.06 0a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2ZM10 11.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm5 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
+    </svg>
+  ),
+  Mail: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>
+    </svg>
+  ),
+  Star: (p) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...p}>
+      <path d="m12 17.27 5.18 3.13-1.37-5.88L20 9.97l-6-.52L12 4 9.99 9.45l-6 .52 4.19 4.55-1.37 5.88L12 17.27Z"/>
+    </svg>
+  ),
+  Arrow: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M5 12h14M13 6l6 6-6 6"/>
+    </svg>
+  ),
+  Menu: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" {...p}>
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </svg>
+  ),
+  Close: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" {...p}>
+      <path d="M6 6l12 12M18 6 6 18"/>
+    </svg>
+  ),
+  Sun: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </svg>
+  ),
+  Moon: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+    </svg>
+  ),
+};
+
+/* ---------- Theme toggle ---------- */
+function ThemeToggle({ compact=false }) {
+  const [dark, setDark] = useState(() => typeof document !== 'undefined' && document.documentElement.classList.contains('theme-dark'));
+  const toggle = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle('theme-dark', next);
+    try { localStorage.setItem('ea-theme', next ? 'dark' : 'light'); } catch (e) {}
+  };
+  return (
+    <button
+      onClick={toggle}
+      aria-label={dark ? 'Alternar para tema claro' : 'Alternar para tema escuro'}
+      title={dark ? 'Tema claro' : 'Tema escuro'}
+      className={`inline-flex items-center justify-center rounded-full border border-pearl text-ink hover:border-gold hover:text-gold transition ${compact ? 'w-10 h-10' : 'w-10 h-10'}`}>
+      <Icon.Moon className="w-[18px] h-[18px] icon-moon" />
+      <Icon.Sun  className="w-[18px] h-[18px] icon-sun" />
+    </button>
+  );
+}
+
+/* ---------- Logo (uses real brand assets) ---------- */
+function Logo({ variant='auto' }) {
+  // variant: 'auto' (mark on mobile + horizontal on ≥sm) | 'mark' | 'horizontal'
+  if (variant === 'mark') {
+    return (
+      <a href="#top" aria-label="Dr. Erich Almeida — Odontologia Estética" className="inline-flex items-center">
+        <img src="assets/logo-mark.png" alt="Dr. Erich Almeida" className="h-10 w-auto" />
+      </a>
+    );
+  }
+  if (variant === 'horizontal') {
+    return (
+      <a href="#top" aria-label="Dr. Erich Almeida — Odontologia Estética" className="inline-flex items-center">
+        <img src="assets/logo-horizontal.png" alt="Dr. Erich Almeida — Odontologia Estética" className="h-10 sm:h-11 w-auto logo-light" />
+        <img src="assets/logo-mark.png" alt="Dr. Erich Almeida" className="h-10 sm:h-11 w-auto logo-dark" />
+      </a>
+    );
+  }
+  return (
+    <a href="#top" aria-label="Dr. Erich Almeida — Odontologia Estética" className="inline-flex items-center">
+      <img src="assets/logo-mark.png" alt="" className="sm:hidden h-10 w-auto" />
+      <img src="assets/logo-horizontal.png" alt="Dr. Erich Almeida — Odontologia Estética" className="hidden sm:block h-11 w-auto logo-light" />
+      <img src="assets/logo-mark.png" alt="" className="hidden sm:block h-11 w-auto logo-dark" />
+    </a>
+  );
+}
+
+/* ---------- Header ---------- */
+function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 8);
+    on(); window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
+  }, []);
+  return (
+    <header className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${scrolled ? 'bg-ivory/85 backdrop-blur-md border-b border-pearl' : 'bg-transparent'}`}>
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
+        <Logo />
+        <nav className="hidden lg:flex items-center gap-9 text-sm text-inksoft/85">
+          <a href="#diferenciais" className="hover:text-gold transition-colors">Diferenciais</a>
+          <a href="#transformacoes" className="hover:text-gold transition-colors">Transformações</a>
+          <a href="#especialista" className="hover:text-gold transition-colors">Especialista</a>
+          <a href="#faq" className="hover:text-gold transition-colors">Dúvidas</a>
+        </nav>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
+          <a href="#agendar"
+             className="btn-primary hidden sm:inline-flex items-center gap-2 bg-ink text-ivory px-5 py-3 text-[13px] font-medium tracking-wide rounded-full">
+            Agendar Consulta
+            <Icon.Arrow className="w-4 h-4" />
+          </a>
+          <button onClick={()=>setOpen(!open)} className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-pearl text-ink" aria-label="Menu">
+            {open ? <Icon.Close className="w-5 h-5"/> : <Icon.Menu className="w-5 h-5"/>}
+          </button>
+        </div>
+      </div>
+      {open && (
+        <div className="lg:hidden border-t border-pearl bg-ivory/95 backdrop-blur">
+          <div className="px-6 py-6 flex flex-col gap-4 text-[15px]">
+            <a onClick={()=>setOpen(false)} href="#diferenciais" className="py-2 border-b border-pearl/60">Diferenciais</a>
+            <a onClick={()=>setOpen(false)} href="#transformacoes" className="py-2 border-b border-pearl/60">Transformações</a>
+            <a onClick={()=>setOpen(false)} href="#especialista" className="py-2 border-b border-pearl/60">Especialista</a>
+            <a onClick={()=>setOpen(false)} href="#faq" className="py-2 border-b border-pearl/60">Dúvidas</a>
+            <a onClick={()=>setOpen(false)} href="#agendar" className="sm:hidden mt-2 inline-flex items-center justify-center gap-2 bg-ink text-ivory px-5 py-3 text-sm rounded-full">
+              Agendar Consulta <Icon.Arrow className="w-4 h-4"/>
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
+
+/* ---------- Hero ---------- */
+function Hero() {
+  return (
+    <section id="top" className="lux-bg relative pt-[112px] sm:pt-[140px] pb-20 lg:pb-28 overflow-hidden">
+      {/* decorative arcs */}
+      <svg className="absolute -top-20 -right-32 w-[640px] h-[640px] opacity-[0.08] pointer-events-none" viewBox="0 0 600 600" aria-hidden="true">
+        <circle cx="300" cy="300" r="260" fill="none" stroke="#0F1E3D" strokeWidth="1"/>
+        <circle cx="300" cy="300" r="200" fill="none" stroke="#C8A875" strokeWidth="1"/>
+        <circle cx="300" cy="300" r="140" fill="none" stroke="#0F1E3D" strokeWidth="1"/>
+      </svg>
+
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="lg:col-span-7 rise">
+          <div className="flex items-center gap-3 mb-7">
+            <span className="h-px w-10 bg-gold"></span>
+            <span className="eyebrow">Reabilitação Estética · CRO-GO 25838</span>
+          </div>
+          <h1 className="font-display text-[40px] leading-[1.05] sm:text-[58px] sm:leading-[1.02] lg:text-[72px] lg:leading-[1.02] text-ink tracking-[-0.01em]">
+            O sorriso que você<br/>
+            <em className="not-italic text-gold font-display italic">imagina</em>, devolvido<br/>
+            com naturalidade.
+          </h1>
+          <p className="mt-7 text-[16px] sm:text-[17px] leading-[1.7] text-inksoft/80 max-w-[560px]">
+            Reabilitação estética com <strong className="text-ink font-medium">Lentes em Resina</strong> ou <strong className="text-ink font-medium">Porcelana</strong>, planejadas em design digital. Um plano sob medida para devolver harmonia, luz e a autoestima que sempre te pertenceu.
+          </p>
+
+          <div className="mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a href="#agendar"
+               className="btn-primary group inline-flex items-center justify-center gap-3 bg-gold text-[#0F1E3D] px-7 py-4 rounded-full text-[14px] font-semibold tracking-wide shadow-goldlux">
+              Agendar Avaliação Premium
+              <Icon.Arrow className="w-4 h-4 transition-transform group-hover:translate-x-1"/>
+            </a>
+            <a href="#transformacoes" className="btn-ghost inline-flex items-center justify-center gap-2 px-6 py-4 text-[14px] font-medium text-ink border border-ink/15 rounded-full hover:border-ink/40">
+              Ver Transformações
+            </a>
+          </div>
+
+          {/* trust strip */}
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-[12px] text-ash">
+            <div className="flex items-center gap-2">
+              <span className="flex text-gold">
+                {[...Array(5)].map((_,i)=><Icon.Star key={i} className="w-3.5 h-3.5"/>)}
+              </span>
+              <span><strong className="text-ink font-semibold">4.9/5</strong> de satisfação</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-pearl"></div>
+            <div>+ de <strong className="text-ink font-semibold">2.000</strong> lentes instaladas</div>
+            <div className="hidden sm:block w-px h-4 bg-pearl"></div>
+            <div>Goiânia, <strong className="text-ink font-semibold">Setor Central</strong></div>
+          </div>
+        </div>
+
+        {/* Hero portrait — Dr. Erich */}
+        <div className="lg:col-span-5 rise" style={{animationDelay:'.15s'}}>
+          <div className="relative">
+            <div className="absolute -inset-4 border border-gold/30 rounded-[28px] hidden sm:block"></div>
+            <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden bg-ink">
+              <img src="assets/dr-erich.jpg" alt="Dr. Erich Almeida" className="absolute inset-0 w-full h-full object-cover" style={{objectPosition:'center 18%'}} />
+              {/* subtle vignette + bottom gradient for legibility */}
+              <div className="absolute inset-0 pointer-events-none" style={{background:'linear-gradient(180deg, rgba(15,30,61,0) 55%, rgba(15,30,61,0.55) 100%)'}}></div>
+              <img src="assets/logo-mark.png" alt="" className="absolute top-5 right-5 h-12 w-auto opacity-90 drop-shadow" />
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-ivory">
+                <div>
+                  <div className="mono text-[10px] uppercase tracking-[0.22em] text-gold">Especialista</div>
+                  <div className="font-display text-[18px] leading-tight mt-1">Dr. Erich Almeida</div>
+                  <div className="text-[11px] text-ivory/70 mt-0.5">CRO-GO 25838</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* press / authority strip */}
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8 mt-16 lg:mt-24">
+        <div className="hairline mb-7"></div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center text-center">
+          {['CRO-GO 25838','Digital Smile Design','Reabilitação Oral','+6 anos de experiência'].map(n => (
+            <div key={n} className="mono text-[11px] uppercase tracking-[0.22em] text-ash/80">{n}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Diferenciais ---------- */
+function Diferenciais() {
+  const items = [
+    { icon: Icon.Cube3D, eyebrow:'01', title: 'Planejamento Digital 3D',
+      body: 'Você visualiza o seu novo sorriso antes do procedimento, em um mock-up digital preciso. Nada começa sem o seu “sim”.' },
+    { icon: Icon.Diamond, eyebrow:'02', title: 'Resina ou Porcelana',
+      body: 'Dois caminhos para o mesmo resultado de excelência. Indicamos o material certo para o seu caso, com técnica e honestidade. Sem empurrar tratamento.' },
+    { icon: Icon.Heart, eyebrow:'03', title: 'Experiência Acolhedora',
+      body: 'Ambiente silencioso e atendimento humanizado. Conforto durante todo o procedimento, para quem tem medo e para quem nunca teve.' },
+    { icon: Icon.Clock, eyebrow:'04', title: 'Resultados Rápidos',
+      body: 'Cronograma enxuto e bem definido na primeira consulta. Sem enrolação, sem urgência fabricada. Você sai sabendo cada passo.' },
+  ];
+  return (
+    <section id="diferenciais" className="py-24 lg:py-32 bg-ivory">
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8">
+        <div className="max-w-[680px] mb-14 lg:mb-20">
+          <div className="eyebrow mb-4">O método</div>
+          <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[52px] leading-[1.08] text-ink gold-rule">
+            Estética séria,<br className="hidden sm:block"/> executada com precisão.
+          </h2>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-pearl border border-pearl rounded-2xl overflow-hidden">
+          {items.map((it, i) => {
+            const I = it.icon;
+            return (
+              <article key={i} className="bg-ivory p-7 lg:p-9 flex flex-col gap-5 group hover:bg-bone/60 transition-colors">
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-full border border-gold/40 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-[#0F1E3D] transition-colors">
+                    <I className="w-6 h-6"/>
+                  </div>
+                  <span className="mono text-[10px] uppercase tracking-[0.22em] text-ash/70">{it.eyebrow}</span>
+                </div>
+                <h3 className="font-display text-[22px] leading-tight text-ink">{it.title}</h3>
+                <p className="text-[14.5px] leading-[1.65] text-inksoft/75">{it.body}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Before/After interactive slider ---------- */
+function BeforeAfter({ label = "Caso clínico" }) {
+  const [pct, setPct] = useState(50);
+  const wrapRef = useRef(null);
+  const dragging = useRef(false);
+
+  const move = (clientX) => {
+    const el = wrapRef.current; if (!el) return;
+    const r = el.getBoundingClientRect();
+    const p = Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100));
+    setPct(p);
+  };
+  const onDown = (e) => { dragging.current = true; move(e.touches ? e.touches[0].clientX : e.clientX); };
+  const onMove = (e) => { if (!dragging.current) return; move(e.touches ? e.touches[0].clientX : e.clientX); };
+  const onUp = () => { dragging.current = false; };
+
+  useEffect(() => {
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchmove', onMove, { passive: true });
+    window.addEventListener('touchend', onUp);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('touchmove', onMove);
+      window.removeEventListener('touchend', onUp);
+    };
+  }, []);
+
+  return (
+    <div ref={wrapRef}
+         onMouseDown={onDown} onTouchStart={onDown}
+         className="relative aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden select-none cursor-ew-resize border border-pearl bg-bone">
+      {/* AFTER (full) */}
+      <div className="absolute inset-0 ph-stripes flex items-end p-5">
+        <span className="mono text-[10px] uppercase tracking-widest text-ink/50">{label} · depois</span>
+      </div>
+      {/* BEFORE (clipped) */}
+      <div className="absolute inset-0 ph-stripes-dark flex items-end p-5" style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}>
+        <span className="mono text-[10px] uppercase tracking-widest text-gold/80">{label} · antes</span>
+      </div>
+      {/* Divider */}
+      <div className="absolute top-0 bottom-0 ba-handle" style={{ left: `calc(${pct}% - 1px)` }}>
+        <div className="w-px h-full bg-gold/90"></div>
+        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-ivory border border-gold flex items-center justify-center shadow-softlux">
+          <svg viewBox="0 0 24 24" className="w-4 h-4 text-ink" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m9 6-6 6 6 6M15 6l6 6-6 6"/>
+          </svg>
+        </div>
+      </div>
+      <span className="absolute top-4 left-4 mono text-[10px] uppercase tracking-widest text-gold bg-ink/85 backdrop-blur px-2 py-1 rounded-full">Antes</span>
+      <span className="absolute top-4 right-4 mono text-[10px] uppercase tracking-widest text-ink bg-ivory/90 backdrop-blur px-2 py-1 rounded-full">Depois</span>
+    </div>
+  );
+}
+
+/* ---------- Galeria Transformações ---------- */
+function Transformacoes() {
+  const total = 12;
+  const cases = Array.from({length: total}, (_, i) => ({
+    src: `assets/transformations/${String(i+1).padStart(2,'0')}.jpg`,
+    n: String(i+1).padStart(2,'0'),
+    type: i >= 9 ? 'craft' : 'patient',
+  }));
+  const [open, setOpen] = useState(null); // index of opened case
+
+  useEffect(() => {
+    if (open === null) return;
+    const onKey = (e) => {
+      if (e.key === 'Escape') setOpen(null);
+      if (e.key === 'ArrowRight') setOpen((o) => (o + 1) % total);
+      if (e.key === 'ArrowLeft')  setOpen((o) => (o - 1 + total) % total);
+    };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [open]);
+
+  return (
+    <section id="transformacoes" className="py-24 lg:py-32 bg-bone/70">
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8">
+        <div className="flex items-end justify-between flex-wrap gap-6 mb-12 lg:mb-16">
+          <div className="max-w-[640px]">
+            <div className="eyebrow mb-4">Galeria</div>
+            <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[52px] leading-[1.08] text-ink gold-rule">
+              Transformações reais.<br/> Naturalidade que se vê,<br className="hidden sm:block"/> confiança que se sente.
+            </h2>
+          </div>
+          <p className="text-[14.5px] text-inksoft/75 max-w-[360px]">
+            Casos reais do consultório, publicados sob consentimento. Toque em qualquer foto para ampliar.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
+          {cases.map((c, i) => (
+            <button
+              key={i}
+              onClick={() => setOpen(i)}
+              className="group relative aspect-square rounded-2xl overflow-hidden bg-ink border border-pearl hover:border-gold/60 transition-all duration-300 text-left">
+              <img src={c.src} alt={`Transformação ${c.n}`} loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.03]" />
+              {/* corner badge */}
+              <span className="absolute top-3 left-3 mono text-[10px] uppercase tracking-[0.22em] text-ink bg-ivory/90 backdrop-blur px-2.5 py-1 rounded-full">
+                {c.n} / {String(total).padStart(2,'0')}
+              </span>
+              {/* hover overlay */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                   style={{background:'linear-gradient(180deg, rgba(15,30,61,0) 60%, rgba(15,30,61,0.55) 100%)'}}></div>
+              <span className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-ivory opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="mono text-[10px] uppercase tracking-[0.22em] text-gold">
+                  {c.type === 'craft' ? 'Lentes em porcelana' : 'Antes · Depois'}
+                </span>
+                <span className="w-8 h-8 rounded-full bg-gold/90 text-[#0F1E3D] flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                </span>
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-14 text-center">
+          <a href="#agendar" className="btn-ghost inline-flex items-center gap-2 px-6 py-3 text-[13px] font-medium text-ink border border-ink/20 rounded-full hover:border-gold hover:text-gold">
+            Quero um plano para o meu sorriso
+            <Icon.Arrow className="w-4 h-4"/>
+          </a>
+        </div>
+      </div>
+
+      {/* Lightbox */}
+      {open !== null && (
+        <div className="fixed inset-0 z-[60] bg-ink/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 sm:p-8" onClick={() => setOpen(null)}>
+          <button onClick={(e)=>{e.stopPropagation(); setOpen(null);}}
+                  className="absolute top-5 right-5 w-11 h-11 rounded-full bg-ivory/10 hover:bg-ivory/20 border border-ivory/20 text-ivory flex items-center justify-center transition" aria-label="Fechar">
+            <Icon.Close className="w-5 h-5"/>
+          </button>
+          <button onClick={(e)=>{e.stopPropagation(); setOpen((o)=>(o-1+total)%total);}}
+                  className="hidden sm:flex absolute left-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-ivory/10 hover:bg-ivory/20 border border-ivory/20 text-ivory items-center justify-center transition" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button onClick={(e)=>{e.stopPropagation(); setOpen((o)=>(o+1)%total);}}
+                  className="hidden sm:flex absolute right-5 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-ivory/10 hover:bg-ivory/20 border border-ivory/20 text-ivory items-center justify-center transition" aria-label="Próximo">
+            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <div className="relative max-w-[min(92vw,720px)] max-h-[82vh] flex flex-col items-center gap-4" onClick={(e)=>e.stopPropagation()}>
+            <img src={cases[open].src} alt={`Transformação ${cases[open].n}`}
+              className="max-w-full max-h-[78vh] object-contain rounded-xl border border-gold/30" />
+            <div className="flex items-center justify-between w-full px-1">
+              <span className="mono text-[11px] uppercase tracking-[0.22em] text-gold">
+                {cases[open].type === 'craft' ? 'Lentes em porcelana · detalhe' : 'Antes  ·  Depois'}
+              </span>
+              <span className="mono text-[11px] uppercase tracking-[0.22em] text-ivory/60">{cases[open].n} / {String(total).padStart(2,'0')}</span>
+            </div>
+          </div>
+          {/* mobile arrows */}
+          <div className="sm:hidden mt-5 flex items-center gap-3">
+            <button onClick={(e)=>{e.stopPropagation(); setOpen((o)=>(o-1+total)%total);}}
+                    className="w-11 h-11 rounded-full bg-ivory/10 hover:bg-ivory/20 border border-ivory/20 text-ivory flex items-center justify-center transition">
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button onClick={(e)=>{e.stopPropagation(); setOpen((o)=>(o+1)%total);}}
+                    className="w-11 h-11 rounded-full bg-ivory/10 hover:bg-ivory/20 border border-ivory/20 text-ivory flex items-center justify-center transition">
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ---------- Sobre o Especialista ---------- */
+function Especialista() {
+  const stats = [
+    { n:'+6', l:'anos dedicados\nà reabilitação estética' },
+    { n:'+2000', l:'lentes\ninstaladas' },
+    { n:'3D', l:'planejamento digital\nem cada sorriso' },
+    { n:'98%', l:'pacientes que\nindicam o consultório' },
+  ];
+  return (
+    <section id="especialista" className="py-24 lg:py-32 bg-ivory">
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="lg:col-span-5">
+          <div className="relative">
+            <div className="absolute -inset-3 border border-gold/30 rounded-[24px] hidden sm:block"></div>
+            <div className="relative aspect-[4/5] rounded-[18px] overflow-hidden bg-ink">
+              <img src="assets/dr-erich.jpg" alt="Dr. Erich Almeida em estúdio" className="absolute inset-0 w-full h-full object-cover" style={{objectPosition:'center 20%'}} />
+              <div className="absolute inset-0 pointer-events-none" style={{background:'linear-gradient(180deg, rgba(15,30,61,0) 60%, rgba(15,30,61,0.6) 100%)'}}></div>
+              <img src="assets/logo-mark.png" alt="" className="absolute top-5 right-5 h-12 w-auto opacity-90" />
+              <div className="absolute bottom-5 left-5 right-5 text-ivory">
+                <div className="mono text-[10px] uppercase tracking-[0.22em] text-gold">Dr. Erich Almeida</div>
+                <div className="font-display text-[18px] leading-tight mt-1">Odontologia Estética</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:col-span-7">
+          <div className="eyebrow mb-4">Quem cuidará do seu sorriso</div>
+          <h2 className="font-display text-[34px] sm:text-[42px] lg:text-[48px] leading-[1.1] text-ink">
+            Dr. Erich Almeida<br/>
+            <em className="not-italic italic font-display text-gold">CRO-GO 25838</em>
+          </h2>
+          <div className="hairline-gold w-32 my-7"></div>
+
+          <p className="text-[15.5px] leading-[1.75] text-inksoft/80 max-w-[600px]">
+            Expert em reabilitação oral, com foco em estética de alta exigência, há mais de 6 anos. Acredita que um sorriso bem feito deve passar despercebido e ser sentido. Uma assinatura discreta no rosto de quem o usa.
+          </p>
+          <p className="mt-5 text-[15.5px] leading-[1.75] text-inksoft/80 max-w-[600px]">
+            Cada caso é tratado como único: <span className="text-ink font-medium">um plano, um paciente, uma assinatura.</span> Sem pacotes, sem pressa, sem promessas que a ciência não acompanha.
+          </p>
+
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-px bg-pearl border border-pearl rounded-2xl overflow-hidden">
+            {stats.map((s, i) => (
+              <div key={i} className="bg-ivory p-5 lg:p-6">
+                <div className="font-display text-[28px] lg:text-[34px] text-ink leading-none">{s.n}</div>
+                <div className="mt-2 text-[11.5px] text-ash whitespace-pre-line leading-[1.5]">{s.l}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-9 flex flex-col sm:flex-row gap-3">
+            <a href="#agendar" className="btn-primary inline-flex items-center justify-center gap-2 bg-ink text-ivory px-6 py-3.5 rounded-full text-[13.5px] font-medium">
+              Conversar com o Dr. Erich <Icon.Arrow className="w-4 h-4"/>
+            </a>
+            <a href="https://wa.me/5562998090123" className="btn-ghost inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-[13.5px] font-medium text-ink border border-ink/15 hover:border-gold hover:text-gold">
+              <Icon.Whatsapp className="w-4 h-4"/> WhatsApp direto
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FAQ ---------- */
+function FAQItem({ q, a, defaultOpen=false }) {
+  return (
+    <details className="border-b border-pearl py-6 group" {...(defaultOpen ? { open: true } : {})}>
+      <summary className="flex items-start justify-between gap-6">
+        <span className="font-display text-[19px] sm:text-[21px] text-ink leading-snug pr-4">{q}</span>
+        <span className="shrink-0 mt-1 w-9 h-9 rounded-full border border-ink/15 flex items-center justify-center text-ink group-open:border-gold group-open:text-gold transition-colors">
+          <Icon.Plus className="w-4 h-4 chev"/>
+        </span>
+      </summary>
+      <div className="mt-4 pr-12 text-[14.5px] leading-[1.75] text-inksoft/80 max-w-[760px]">{a}</div>
+    </details>
+  );
+}
+
+function FAQ() {
+  const faqs = [
+    {
+      q: 'O procedimento de Lentes em Resina ou Porcelana dói?',
+      a: 'Não. O protocolo é minimamente invasivo: a maior parte dos casos é executada sem qualquer desgaste do dente natural e, quando necessário, o desgaste é da espessura de uma lente de contato. Trabalhamos com anestesia tópica de conforto durante todo o procedimento.'
+    },
+    {
+      q: 'Em quanto tempo terei o meu sorriso pronto?',
+      a: 'O cronograma é definido na primeira consulta, após o diagnóstico digital, e varia conforme o caso e o material escolhido. Em geral, o resultado é rápido. Você sai da avaliação já com a previsão completa de prazos, etapas e investimento.'
+    },
+    {
+      q: 'Qual a durabilidade das lentes em resina e porcelana?',
+      a: 'Com a manutenção adequada (higiene, visitas semestrais e proteção noturna quando indicada), as lentes em porcelana têm durabilidade média de 10 a 15 anos, podendo ultrapassar este prazo. As lentes em resina também são duradouras, com a vantagem de manutenção e reparos mais práticos quando necessários.'
+    },
+    {
+      q: 'As lentes ficam com aparência natural?',
+      a: 'Sim. Todo o planejamento é feito a partir das proporções do seu rosto, sorriso e personalidade. Buscamos um resultado que pareça seu, apenas a melhor versão dele. Translucidez, textura e cor são caracterizadas individualmente, caso a caso.'
+    },
+    {
+      q: 'Qual o investimento e formas de pagamento?',
+      a: 'Cada plano é único e o valor é definido somente após a avaliação, pois depende do material escolhido (resina ou porcelana), do número de elementos e da complexidade estética. Oferecemos parcelamento em até 18× no cartão e condições especiais à vista.'
+    },
+    {
+      q: 'Preciso fazer algo antes da primeira avaliação?',
+      a: 'Não. Basta agendar. Na consulta de diagnóstico fazemos fotos profissionais, escaneamento intraoral e o estudo digital do seu sorriso. Você sai da consulta com uma proposta clara e o investimento detalhado.'
+    },
+  ];
+  return (
+    <section id="faq" className="py-24 lg:py-32 bg-bone/70">
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12">
+        <div className="lg:col-span-4">
+          <div className="eyebrow mb-4">Dúvidas frequentes</div>
+          <h2 className="font-display text-[34px] sm:text-[42px] lg:text-[44px] leading-[1.08] text-ink gold-rule">
+            Tudo o que você precisa saber antes do primeiro “oi”.
+          </h2>
+          <p className="mt-6 text-[14.5px] text-inksoft/75 leading-[1.7]">
+            Não encontrou sua dúvida? Fale conosco no WhatsApp. Respondemos pessoalmente, sem chatbot.
+          </p>
+          <a href="https://wa.me/5562998090123" className="mt-6 inline-flex items-center gap-2 text-[13px] text-gold hover:text-golddk">
+            <Icon.Whatsapp className="w-4 h-4"/> Falar pelo WhatsApp <Icon.Arrow className="w-4 h-4"/>
+          </a>
+        </div>
+        <div className="lg:col-span-8">
+          {faqs.map((f, i) => <FAQItem key={i} {...f} defaultOpen={i===0}/>)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- CTA / Agendar ---------- */
+function CTA() {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ nome:'', whats:'', periodo:'Manhã' });
+  const submit = (e) => {
+    e.preventDefault();
+    const msg =
+`Olá, Dr. Erich! Gostaria de agendar uma avaliação.
+
+*Nome:* ${form.nome}
+*WhatsApp:* ${form.whats}
+*Melhor período:* ${form.periodo}`;
+    const url = `https://wa.me/5562998090123?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank', 'noopener');
+    setSent(true);
+  };
+
+  return (
+    <section id="agendar" className="relative py-24 lg:py-32 bg-ink text-ivory overflow-hidden">
+      <svg className="absolute -bottom-32 -left-32 w-[520px] h-[520px] opacity-[0.10] pointer-events-none" viewBox="0 0 600 600" aria-hidden="true">
+        <circle cx="300" cy="300" r="260" fill="none" stroke="#C8A875" strokeWidth="1"/>
+        <circle cx="300" cy="300" r="200" fill="none" stroke="#C8A875" strokeWidth="1"/>
+        <circle cx="300" cy="300" r="140" fill="none" stroke="#C8A875" strokeWidth="1"/>
+      </svg>
+
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12 items-center relative">
+        <div className="lg:col-span-6">
+          <div className="eyebrow" style={{color:'#C8A875'}}>Agende sua avaliação</div>
+          <h2 className="mt-4 font-display text-[36px] sm:text-[46px] lg:text-[54px] leading-[1.05]">
+            O próximo passo do seu sorriso começa com uma <em className="italic text-gold">conversa</em>.
+          </h2>
+          <p className="mt-6 text-[15px] leading-[1.75] text-ivory/75 max-w-[520px]">
+            Avaliação digital 3D em consulta privativa, com diagnóstico, mock-up e plano detalhado entregues no mesmo dia. Vagas limitadas a 4 novos pacientes por semana.
+          </p>
+          <ul className="mt-7 space-y-3 text-[14px] text-ivory/85">
+            {['Estudo digital 3D do seu sorriso','Mock-up para você visualizar o resultado','Orçamento personalizado conforme o seu caso','Retorno no mesmo dia útil para confirmação'].map((t,i)=>(
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span> {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="lg:col-span-6">
+          <form onSubmit={submit} className="bg-ivory text-ink rounded-2xl p-6 sm:p-8 shadow-softlux">
+            {!sent ? (
+              <>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="font-display text-[20px]">Agendar consulta</div>
+                  <div className="mono text-[10px] uppercase tracking-widest text-ash">passo 1 de 1</div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <label className="block">
+                    <span className="eyebrow text-ink/60" style={{color:'#6B6A65'}}>Seu nome</span>
+                    <input required value={form.nome} onChange={e=>setForm({...form, nome:e.target.value})}
+                      placeholder="Como gostaria de ser chamado(a)"
+                      className="mt-2 w-full bg-bone/40 border border-pearl rounded-xl px-4 py-3 text-[14px] outline-none focus:border-gold focus:bg-ivory transition" />
+                  </label>
+                  <label className="block">
+                    <span className="eyebrow text-ink/60" style={{color:'#6B6A65'}}>WhatsApp</span>
+                    <input required value={form.whats} onChange={e=>setForm({...form, whats:e.target.value})}
+                      placeholder="(62) 99809-0123"
+                      className="mt-2 w-full bg-bone/40 border border-pearl rounded-xl px-4 py-3 text-[14px] outline-none focus:border-gold focus:bg-ivory transition" />
+                  </label>
+                  <div>
+                    <span className="eyebrow text-ink/60" style={{color:'#6B6A65'}}>Melhor período</span>
+                    <div className="mt-2 grid grid-cols-3 gap-2">
+                      {['Manhã','Tarde','Noite'].map(p => (
+                        <button type="button" key={p} onClick={()=>setForm({...form, periodo:p})}
+                          className={`py-3 text-[13px] rounded-xl border transition ${form.periodo===p ? 'border-gold bg-gold/10 text-ink' : 'border-pearl text-ash hover:border-ink/30'}`}>
+                          {p}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <button className="btn-primary mt-3 inline-flex items-center justify-center gap-2 bg-ink text-ivory py-4 rounded-full text-[14px] font-medium">
+                    Reservar minha vaga <Icon.Arrow className="w-4 h-4"/>
+                  </button>
+                  <p className="text-[11px] text-ash text-center">
+                    Ao enviar, você concorda com nossa <a className="underline underline-offset-2 hover:text-gold" href="#privacidade">Política de Privacidade</a>. Não enviamos spam.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-6">
+                <div className="w-14 h-14 rounded-full border border-gold text-gold flex items-center justify-center mx-auto">
+                  <Icon.Whatsapp className="w-7 h-7" />
+                </div>
+                <h3 className="mt-5 font-display text-[24px]">Quase lá, {form.nome.split(' ')[0] || 'tudo certo'}.</h3>
+                <p className="mt-3 text-[14px] text-ash leading-[1.7] max-w-[380px] mx-auto">
+                  Abrimos o WhatsApp para você com a mensagem já preenchida. <strong className="text-ink">Toque em enviar</strong> e a equipe do Dr. Erich retorna em até 1h útil para confirmar sua vaga.
+                </p>
+                <a href={`https://wa.me/5562998090123?text=${encodeURIComponent(`Olá, Dr. Erich! Gostaria de agendar uma avaliação.\n\n*Nome:* ${form.nome}\n*WhatsApp:* ${form.whats}\n*Melhor período:* ${form.periodo}`)}`}
+                   target="_blank" rel="noopener"
+                   className="mt-6 inline-flex items-center justify-center gap-2 bg-ink text-ivory px-5 py-3 rounded-full text-[13px] font-medium">
+                  Abrir WhatsApp novamente <Icon.Arrow className="w-4 h-4"/>
+                </a>
+                <button onClick={()=>setSent(false)} className="mt-5 block mx-auto text-[12px] eyebrow text-gold">enviar outro pedido</button>
+              </div>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Footer ---------- */
+function Footer() {
+  return (
+    <footer className="bg-ivory text-ink pt-20 pb-10 border-t border-pearl">
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8 grid md:grid-cols-12 gap-10">
+        <div className="md:col-span-5">
+          <Logo variant="horizontal" />
+          <p className="mt-6 text-[14px] text-inksoft/75 leading-[1.7] max-w-[420px]">
+            Consultório boutique de odontologia estética. Atendimento exclusivo e particular, com horários reduzidos para garantir a qualidade da experiência.
+          </p>
+          <div className="mt-6 flex items-center gap-3">
+            <a href="https://wa.me/5562998090123" aria-label="WhatsApp" className="w-10 h-10 rounded-full border border-pearl flex items-center justify-center text-ink hover:border-gold hover:text-gold transition"><Icon.Whatsapp className="w-4 h-4"/></a>
+            <a href="mailto:dr.erichalmeida1@gmail.com" aria-label="E-mail" className="w-10 h-10 rounded-full border border-pearl flex items-center justify-center text-ink hover:border-gold hover:text-gold transition"><Icon.Mail className="w-4 h-4"/></a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Edif%C3%ADcio+Buriti+Center+Alameda+dos+Buritis+408+Goi%C3%A2nia" target="_blank" rel="noopener" aria-label="Abrir no Google Maps" className="w-10 h-10 rounded-full border border-pearl flex items-center justify-center text-ink hover:border-gold hover:text-gold transition"><Icon.Pin className="w-4 h-4"/></a>
+            <a href="https://www.waze.com/ul?q=Alameda%20dos%20Buritis%20408%20Goi%C3%A2nia" target="_blank" rel="noopener" aria-label="Abrir no Waze" className="w-10 h-10 rounded-full border border-pearl flex items-center justify-center text-ink hover:border-gold hover:text-gold transition"><Icon.Waze className="w-4 h-4"/></a>
+          </div>
+        </div>
+        <div className="md:col-span-3">
+          <div className="eyebrow mb-4">Contato</div>
+          <ul className="space-y-3 text-[13.5px] text-inksoft/80">
+            <li>
+              <a href="https://www.google.com/maps/search/?api=1&query=Edif%C3%ADcio+Buriti+Center+Alameda+dos+Buritis+408+Goi%C3%A2nia" target="_blank" rel="noopener"
+                 className="group flex items-start gap-2 hover:text-gold transition-colors">
+                <Icon.Pin className="w-4 h-4 mt-[3px] text-gold shrink-0"/>
+                <span>Edifício Buriti Center<br/>Alameda dos Buritis, 408, Cobertura<br/>Setor Central · Goiânia/GO<br/>CEP 74015-080<br/>
+                  <span className="inline-flex items-center gap-1 mt-2 text-[11.5px] eyebrow text-gold group-hover:text-golddk">
+                    Como chegar <Icon.Arrow className="w-3.5 h-3.5"/>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li className="flex items-center gap-2"><Icon.Whatsapp className="w-4 h-4 text-gold"/> <a href="https://wa.me/5562998090123" className="hover:text-gold">(62) 99809-0123</a></li>
+            <li className="flex items-start gap-2"><Icon.Mail className="w-4 h-4 mt-[3px] text-gold shrink-0"/> <a href="mailto:dr.erichalmeida1@gmail.com" className="hover:text-gold break-all">dr.erichalmeida1@gmail.com</a></li>
+            <li className="flex items-center gap-3 pt-2">
+              <a href="https://www.google.com/maps/search/?api=1&query=Edif%C3%ADcio+Buriti+Center+Alameda+dos+Buritis+408+Goi%C3%A2nia" target="_blank" rel="noopener"
+                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-pearl text-[12px] hover:border-gold hover:text-gold transition">
+                <Icon.Pin className="w-3.5 h-3.5"/> Google Maps
+              </a>
+              <a href="https://www.waze.com/ul?q=Alameda%20dos%20Buritis%20408%20Goi%C3%A2nia" target="_blank" rel="noopener"
+                 className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-pearl text-[12px] hover:border-gold hover:text-gold transition">
+                <Icon.Waze className="w-3.5 h-3.5"/> Waze
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="md:col-span-2">
+          <div className="eyebrow mb-4">Horário</div>
+          <ul className="space-y-2 text-[13.5px] text-inksoft/80">
+            <li>Seg a Sex<br/><span className="text-ink">09h às 19h</span></li>
+            <li>Sábado<br/><span className="text-ink">09h às 13h</span></li>
+            <li className="text-ash">Atendimento sob agendamento</li>
+          </ul>
+        </div>
+        <div className="md:col-span-2">
+          <div className="eyebrow mb-4">Institucional</div>
+          <ul className="space-y-2 text-[13.5px] text-inksoft/80">
+            <li><a href="#privacidade" className="hover:text-gold">Política de Privacidade</a></li>
+            <li><a href="#" className="hover:text-gold">Termos de Uso</a></li>
+            <li className="text-ash">Responsável Técnico:<br/>Dr. Erich Almeida, CRO-GO 25838</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="hairline my-10"></div>
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11.5px] text-ash">
+        <div>© {new Date().getFullYear()} Dr. Erich Almeida Odontologia Estética. Todos os direitos reservados.</div>
+        <div className="mono uppercase tracking-[0.2em]">Crafted with care · Goiânia</div>
+      </div>
+    </footer>
+  );
+}
+
+/* ---------- Sticky mobile CTA ---------- */
+function StickyMobileCTA() {
+  return (
+    <div className="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-ivory/95 backdrop-blur border-t border-pearl sticky-cta-shadow">
+      <div className="px-4 py-3 flex items-center gap-2">
+        <a href="https://wa.me/5562998090123" className="flex-1 inline-flex items-center justify-center gap-2 border border-ink/15 py-3 rounded-full text-[13px] font-medium text-ink">
+          <Icon.Whatsapp className="w-4 h-4 text-gold"/> WhatsApp
+        </a>
+        <a href="#agendar" className="flex-[1.4] inline-flex items-center justify-center gap-2 bg-ink text-ivory py-3 rounded-full text-[13px] font-medium">
+          Agendar Consulta <Icon.Arrow className="w-4 h-4"/>
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ---------- App ---------- */
+function App() {
+  return (
+    <div className="min-h-screen bg-ivory pb-20 lg:pb-0">
+      <Header />
+      <main>
+        <Hero />
+        <Diferenciais />
+        <Transformacoes />
+        <Especialista />
+        <FAQ />
+        <CTA />
+      </main>
+      <Footer />
+      <StickyMobileCTA />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
