@@ -287,23 +287,23 @@ function Logo({ variant='auto' }) {
   if (variant === 'mark') {
     return (
       <a href="#top" aria-label="Dr. Erich Almeida — Odontologia Estética" className="inline-flex items-center">
-        <img src="assets/logo-mark.png" alt="Dr. Erich Almeida" className="h-10 w-auto" />
+        <img src="assets/logo-mark.png" alt="Dr. Erich Almeida" className="h-12 w-auto" />
       </a>
     );
   }
   if (variant === 'horizontal') {
     return (
       <a href="#top" aria-label="Dr. Erich Almeida — Odontologia Estética" className="inline-flex items-center">
-        <img src="assets/logo-horizontal.png" alt="Dr. Erich Almeida — Odontologia Estética" className="h-10 sm:h-11 w-auto logo-light" />
-        <img src="assets/logo-mark.png" alt="Dr. Erich Almeida" className="h-10 sm:h-11 w-auto logo-dark" />
+        <img src="assets/logo-horizontal.png" alt="Dr. Erich Almeida — Odontologia Estética" className="h-12 sm:h-14 w-auto logo-light" />
+        <img src="assets/logo-horizontal-dark.png" alt="Dr. Erich Almeida — Odontologia Estética" className="h-12 sm:h-14 w-auto logo-dark" />
       </a>
     );
   }
   return (
     <a href="#top" aria-label="Dr. Erich Almeida — Odontologia Estética" className="inline-flex items-center">
-      <img src="assets/logo-mark.png" alt="" className="sm:hidden h-10 w-auto" />
-      <img src="assets/logo-horizontal.png" alt="Dr. Erich Almeida — Odontologia Estética" className="hidden sm:block h-11 w-auto logo-light" />
-      <img src="assets/logo-mark.png" alt="" className="hidden sm:block h-11 w-auto logo-dark" />
+      <img src="assets/logo-mark.png" alt="" className="sm:hidden h-12 w-auto" />
+      <img src="assets/logo-horizontal.png" alt="Dr. Erich Almeida — Odontologia Estética" className="hidden sm:block h-14 w-auto logo-light" />
+      <img src="assets/logo-horizontal-dark.png" alt="Dr. Erich Almeida — Odontologia Estética" className="hidden sm:block h-14 w-auto logo-dark" />
     </a>
   );
 }
@@ -319,7 +319,7 @@ function Header() {
   }, []);
   return (
     <header className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${scrolled ? 'bg-ivory/85 backdrop-blur-md border-b border-pearl' : 'bg-transparent'}`}>
-      <div className="max-w-[1240px] mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-8 h-[88px] flex items-center justify-between">
         <Logo />
         <nav className="hidden md:flex items-center gap-6 lg:gap-9 text-[13px] lg:text-sm text-inksoft/85">
           <a href="#diferenciais" className="hover:text-gold transition-colors">Diferenciais</a>
@@ -361,7 +361,7 @@ function Header() {
 /* ---------- Hero ---------- */
 function Hero() {
   return (
-    <section id="top" className="lux-bg relative pt-[112px] sm:pt-[140px] pb-20 lg:pb-28 overflow-hidden">
+    <section id="top" className="lux-bg relative pt-[128px] sm:pt-[156px] pb-20 lg:pb-28 overflow-hidden">
       {/* decorative arcs */}
       <svg className="absolute -top-20 -right-32 w-[640px] h-[640px] opacity-[0.08] pointer-events-none" viewBox="0 0 600 600" aria-hidden="true">
         <circle cx="300" cy="300" r="260" fill="none" stroke="#0F1E3D" strokeWidth="1"/>
@@ -750,7 +750,7 @@ function Conecte() {
       title: 'Avalie nosso\natendimento',
       sub: 'Foi atendido por nós? Sua opinião ajuda outros pacientes a darem o primeiro passo.',
       cta: 'Avaliar no Google',
-      href: 'https://search.google.com/local/writereview?placeid=SEU_PLACE_ID',
+      href: 'https://g.page/r/CX6YOwzdfcpNEBM/review',
       tone: 'neutral',
       external: true,
     },
